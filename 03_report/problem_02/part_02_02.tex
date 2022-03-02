@@ -1,0 +1,20 @@
+
+Question 2.2:\\	
+\textsl{We will now treat your cluster assignments as labels for supervised learning. Fit a logistic regression model to the original data (not principal components), with your clustering as the target labels. Since the data is high-dimensional, make sure to regularize your model using your choice of $l_1$, $l_2$, or elastic net, and separate the data into training and validation or use cross-validation to select your model. Report your choice of regularization parameter and validation performance.}\\
+
+Answer:\\
+With using the cluster assignments as labels for the data set we receive the data:\\
+
+$X$: $log_2(X_{original}+1)$-transformed data from gene data set\\
+$y$: cluster assignments from K-Means (3 clusters, given 50 PC's from PCA)\\
+
+Further Boundaries: 
+\begin{itemize}
+	\item The train-test-split was done with an ratio of 0.33 ($\frac{n_{train}}{{n_{test}}} \approx \frac{2}{1}$).
+	\item The function \texttt{sklearn.linear\_model.LogisticRegression} was used.
+	\item The regularization had minor effect on the score and was set to default settings (\texttt{penalty='l2'}).
+	\item The maximum number of iterations had minor effect on the score and was set to default settings (\texttt{max\_iter=100}).
+	\item The \texttt{liblinear}-solver was used (\texttt{solver='liblinear'}).
+\end{itemize}
+
+Result: The test data could be classified with a score of 0.996 to the corresponding cluster.
